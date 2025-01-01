@@ -5,6 +5,8 @@ import coverPhoto from "@/public/Assets/marquee/Loathsome Humanoids in the style
 import chatGpt from "@/public/Assets/chat.png";
 import badhon from "@/public/Assets/badhon.jpg";
 import { Styles } from '@/Utils/style';
+import Ratings from '@/Utils/Ratings';
+import Link from 'next/link';
 
 type Props = {}
 
@@ -30,8 +32,18 @@ const PromptsCard = (props: Props) => {
         <div className="flex items-center">
              <Avatar src={`${badhon}`} alt='img not found'/>
              <span className={`${Styles.label} pl-3`}>@{'badhon'}</span>
+             
         </div>
+        <Ratings rating={2.3}/>
        </div>
+       <br />
+       <Link href='/get-prompt' className='w-full'>
+       <div
+          className={`${Styles.button} !py-2 !px-3 text-center mb-3 w-full text-white bg-transparent border border-[#16c252] hover:bg-[#16c252] hover:text-black duration-300 transition-opacity font-Inter font-[600]`}
+        >
+          Get Prompts
+        </div>
+       </Link>
     </Card>
   )
 }
