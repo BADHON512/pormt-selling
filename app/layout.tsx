@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Provider from "./(Provider)/NextUiProvider";
+import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "react-hot-toast";
 
-const inter=Inter({
+const inter = Inter({
   subsets: ["latin"],
-  variable:"--font-inter"
+  variable: "--font-inter"
 })
-const montserrat= Montserrat({subsets:['latin'],variable:'--font-montserrat'})
+const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,13 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${montserrat.variable} antialiased`}
-      >
-        <Provider>{children}</Provider>
-        
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${inter.variable} ${montserrat.variable} antialiased`}
+        >
+           <Toaster position="bottom-center" reverseOrder={false}/>
+          <Provider>{children}</Provider>
+
+        </body>
+      </html>
+      </ClerkProvider>
   );
 }
