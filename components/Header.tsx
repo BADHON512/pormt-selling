@@ -16,16 +16,16 @@ import { RxCross1 } from 'react-icons/rx'
 type Props = {
   activeItem: number
   user: User | null
+  isSellerExist: boolean;
 }
 
-const Header = ({ activeItem, user }: Props) => {
-
+const Header = ({ activeItem, user,isSellerExist }: Props) => {
+ console.log(user)
 
   const [active, setActive] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeProfile, setActiveProfile] = useState(false)
-  const [isSellerExist, setIsSellerExist] = useState(false)
-  console.log(activeProfile)
+
   if (typeof window !== 'undefined') {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
@@ -64,12 +64,12 @@ const Header = ({ activeItem, user }: Props) => {
           {/* for authentication */}
 
           {user ? (
-            <div>
+           
               <DropDown
                 user={user}
                 setOpen={setOpen}
                 handleProfile={handleProfile}
-                isSellerExist={isSellerExist} /> </div>
+                isSellerExist={isSellerExist} /> 
           ) : (
             <Link href='/sign-in'>
               <CgProfile className='text-[25px] cursor-pointer' /></Link>
