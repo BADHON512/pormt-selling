@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "@/Utils/Loader";
 
 
 type PromptsDataTypes = {
@@ -15,40 +16,40 @@ type PromptsDataTypes = {
   status: string;
 };
 
-const promptsData = [
-    {
-      id: "1",
-      name: "Prompt One",
-      price: 29.99,
-      rating: 4.5,
-      orders: [{ id: "o1" }, { id: "o2" }],
-      status: "Live",
-    },
-    {
-      id: "2",
-      name: "Prompt Two",
-      price: 49.99,
-      rating: 4.8,
-      orders: [{ id: "o3" }],
-      status: "Pending",
-    },
-    {
-      id: "3",
-      name: "Prompt Three",
-      price: 19.99,
-      rating: 3.9,
-      orders: [],
-      status: "Declined",
-    },
-    {
-      id: "4",
-      name: "Prompt Four",
-      price: 99.99,
-      rating: 5.0,
-      orders: [{ id: "o4" }, { id: "o5" }, { id: "o6" }],
-      status: "Live",
-    },
-  ];
+// const promptsData = [
+//     {
+//       id: "1",
+//       name: "Prompt One",
+//       price: 29.99,
+//       rating: 4.5,
+//       orders: [{ id: "o1" }, { id: "o2" }],
+//       status: "Live",
+//     },
+//     {
+//       id: "2",
+//       name: "Prompt Two",
+//       price: 49.99,
+//       rating: 4.8,
+//       orders: [{ id: "o3" }],
+//       status: "Pending",
+//     },
+//     {
+//       id: "3",
+//       name: "Prompt Three",
+//       price: 19.99,
+//       rating: 3.9,
+//       orders: [],
+//       status: "Declined",
+//     },
+//     {
+//       id: "4",
+//       name: "Prompt Four",
+//       price: 99.99,
+//       rating: 5.0,
+//       orders: [{ id: "o4" }, { id: "o5" }, { id: "o6" }],
+//       status: "Live",
+//     },
+//   ];
   
 const AllPrompts = ({
 
@@ -66,10 +67,14 @@ const AllPrompts = ({
     },
   ];
   const [promptsData,setPromptsData]=useState([])
+  const [loging, setLoading] = useState(true)
+  console.log(promptsData)
   useEffect(() => {
     axios.get('/api/get-prompts').then((res)=>{
  setPromptsData(res.data)
+ setLoading(false)
     }).catch((error)=>{
+        setLoading(false)
         console.log(error)
     })
   
@@ -90,10 +95,11 @@ const AllPrompts = ({
     });
   });
 
-  const isDashboard: boolean = false;
+  const isDashboard: boolean = true;
   return (
     <>
-      <Box m="20px">
+{
+    loging?(<Loader/>):(      <Box m="20px">
         <Box
           m="40px 0 0 0"
           height={isDashboard ? "35vh" : "90vh"}
@@ -103,10 +109,10 @@ const AllPrompts = ({
               outline: "none",
             },
             "& .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon": {
-              color: "#fff",
+              color: "",
             },
             "& .MuiDataGrid-sortIcon": {
-              color: "#fff",
+              color: "",
             },
             "& .MuiDataGrid-row": {
               color: "#fff",
@@ -124,7 +130,7 @@ const AllPrompts = ({
             "& .MuiDataGrid-columnHeaders": {
               backgroundColor: "#3e4396",
               borderBottom: "none",
-              color: "#fff",
+              color: "black",
             },
             "& .MuiDataGrid-virtualScroller": {
               backgroundColor: "#1F2A40",
@@ -144,7 +150,8 @@ const AllPrompts = ({
         >
           <DataGrid checkboxSelection rows={rows} columns={columns} />
         </Box>
-      </Box>
+      </Box>)
+}
     </>
   );
 };
