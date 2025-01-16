@@ -1,3 +1,4 @@
+"use client"
 import { Styles } from '@/Utils/style';
 import { useClerk } from '@clerk/nextjs';
 import { User } from '@clerk/nextjs/server'
@@ -10,10 +11,10 @@ import { GrDocumentStore } from 'react-icons/gr';
 import { TbSwitchVertical } from 'react-icons/tb';
 
 type Props = {
-    user:User|null;
+    user:User|undefined;
     setOpen:(open:boolean)=>void
     handleProfile:( )=>void
-    isSellerExist:boolean
+    isSellerExist?:boolean |undefined
 }
 
 const DropDown = ({user,setOpen,handleProfile,isSellerExist}: Props) => {
@@ -30,6 +31,7 @@ const DropDown = ({user,setOpen,handleProfile,isSellerExist}: Props) => {
     </DropdownTrigger>
     <DropdownMenu aria-label='profile Actions' variant='flat'>
       <DropdownItem  onClick={(()=>{
+      
         handleProfile()
         setOpen(false)
       })}>

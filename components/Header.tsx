@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navigation from './Navigation'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
@@ -15,16 +15,17 @@ import { RxCross1 } from 'react-icons/rx'
 
 type Props = {
   activeItem: number
-  user: User | null
-  isSellerExist: boolean;
+  user: User | undefined
+  isSellerExist: boolean | undefined;
 }
 
 const Header = ({ activeItem, user,isSellerExist }: Props) => {
- console.log(user)
+
 
   const [active, setActive] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeProfile, setActiveProfile] = useState(false)
+
 
   if (typeof window !== 'undefined') {
     window.addEventListener("scroll", () => {
@@ -44,6 +45,7 @@ const Header = ({ activeItem, user,isSellerExist }: Props) => {
   const handleProfile = () => {
     setActiveProfile(!activeProfile)
   }
+
   return (
     <div
       className={`w-full p-5 border-b min-h-[60px] border-b-[#ffffff32] transition-opacity ${active && "fixed top-0 left-0 bg-[#000] z-[9999]"

@@ -13,10 +13,14 @@ export async function GET(req: NextRequest) {
       },
       include: {
         orders: true,
+        images:true,
+        reviews: true,
+        promptUrl: true,
+       
       },
     });
 
-    return NextResponse.json(prompts);
+    return NextResponse.json({prompts});
   } catch (error) {
 
     return new NextResponse("Internal Error", { status: 500 });
