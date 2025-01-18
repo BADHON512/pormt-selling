@@ -17,6 +17,7 @@ type Props = {
 
 const PromptsCard = ({prompt}: Props) => {
 const [shopData, setShopData] = useState<any>()
+console.log(prompt)
     
      useEffect(() => {
 

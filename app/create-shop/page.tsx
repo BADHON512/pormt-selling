@@ -6,13 +6,17 @@ import axios from 'axios';
 import React from 'react'
 import { useState } from "react";
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 type Props = {}
 
 const Page = (props: Props) => {
+  const router = useRouter();
   const { user } = useUser()
+
   const [loading, setLoading] = useState(false);
   const [shopData, setShopData] = useState({
+
     name: "",
     description: "",
     shopProductsType: "",
@@ -27,7 +31,7 @@ const Page = (props: Props) => {
         name: shopData.name,
         description: shopData.description,
         shopProductsType: shopData.shopProductsType,
-        avatar: shopData?.avatar || '',
+        avatar: shopData?.imageUrl || '',
         userId: user?.id,
 
       }
@@ -40,6 +44,7 @@ const Page = (props: Props) => {
           shopProductsType: "",
           avatar: "",
         })
+        router.push('/my-shop')
 
       }).catch((error) => {
         setLoading(false)
@@ -50,7 +55,7 @@ const Page = (props: Props) => {
           shopProductsType: "",
           avatar: "",
         })
-
+        
       })
     }
   }
