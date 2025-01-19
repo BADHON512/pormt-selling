@@ -10,7 +10,7 @@ const AboutPage =async () => {
     const data=await getUser()
   return (
    <div>
-    <Header user={data?.user } isSellerExist={data?.shop?true:false}/>
+    <Header activeItem={2} user={data?.user } isSellerExist={data?.shop?true:false}/>
         <div className="min-h-screen flex flex-col text-white">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-500 to-purple-600 text-white py-20 px-5">

@@ -80,7 +80,7 @@ const Page = (props: Props) => {
               onChange={(e) =>
                 setShopData({ ...shopData, name: e.target.value })
               }
-              label="Becodemy"
+              label="CodeHorizon"
               size="sm"
               variant="bordered"
             />

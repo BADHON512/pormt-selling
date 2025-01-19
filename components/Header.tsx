@@ -54,7 +54,7 @@ const Header = ({ activeItem, user,isSellerExist }: Props) => {
       <div className="hidden md:w-[90%] mx-auto md:flex items-center justify-between">
         <div>
           <Link href={'/'}>
-            <h1 className='font-Inter text-3xl cursor-pointer'>  <span className='text-[#64ff4c]'>Bec</span>odemy</h1>
+            <h1 className='font-Inter text-3xl cursor-pointer'>  <span className='text-[#64ff4c]'>Code</span>Horizon</h1>
 
           </Link>
         </div>

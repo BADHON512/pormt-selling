@@ -11,7 +11,7 @@ function Footer({}: Props) {
         <div>
           <Link href={"/"}>
             <h1 className="font-Inter text-3xl cursor-pointer">
-              <span className="text-[#64ff4c]">Bec</span>odemy
+              <span className="text-[#64ff4c]">Code</span>Horizon
             </h1>
           </Link>
         </div>
@@ -45,7 +45,7 @@ function Footer({}: Props) {
         </div>
       </div>
       <p className={`${Styles.paragraph} text-center`}>
-        Copyright © 2023 Becodemy . All Rights Reserved
+        Copyright © 2023 CodeHorizon . All Rights Reserved
       </p>
       <br />
       <br />
