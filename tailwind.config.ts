@@ -20,6 +20,17 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+
+      animation: {
+        'bg-shift': 'bg-shift 3s infinite',
+      },
+      keyframes: {
+        'bg-shift': {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+      }
     },
   },
   plugins: [nextui()],

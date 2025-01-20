@@ -17,7 +17,7 @@ type Props = {
 
 const PromptsCard = ({prompt}: Props) => {
 const [shopData, setShopData] = useState<any>()
-console.log(prompt)
+
     
      useEffect(() => {
 
@@ -29,7 +29,8 @@ console.log(prompt)
       const shopData=await getShopById({shopId:prompt?.sellerId})
       setShopData(shopData)
      }
-
+ const cutName=prompt?.name
+ const shortName=cutName?.length>20?cutName?.slice(0,20)+"...":cutName
   return (
     <Card
     radius="lg"
@@ -75,7 +76,7 @@ console.log(prompt)
     </div>
     <div className="w-full flex justify-between py-2">
       <h3 className={`${Styles.label} text-[18px] text-white`}>
-        {prompt?.name}
+        {shortName}
       </h3>
       <p className={`${Styles.paragraph}`}>${prompt?.price}</p>
     </div>

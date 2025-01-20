@@ -4,6 +4,7 @@ import Image from 'next/image'
 import craft from "@/public/Assets/craft-thumb.png";
 
 import React from 'react'
+import Link from 'next/link';
 
 type Props = {}
 
@@ -18,7 +19,8 @@ const About = (props: Props) => {
             <p className={`${Styles.paragraph} pb-5`}>
                 Ai image generation tools have emerged as powerful resources in the realm of digital art and design. these cutting-edge tools leverage advanced.
             </p>
-             <Button className={`${Styles.button} bg-[#2551b0] font-[500] h-[45px]`}>Visit Shop</Button>
+           <Link href='/marketplace'>
+           <Button   className={`${Styles.button} bg-[#2551b0] font-[500] h-[45px]`}>Visit Shop</Button></Link>
 
 
         </div>

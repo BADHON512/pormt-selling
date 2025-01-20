@@ -19,21 +19,23 @@ import { User } from '@clerk/nextjs/server';
 type Props = {
   user:User|undefined
   isSellerExist:boolean |undefined
+  TopSeller:any
+  allPrompts:any
 }
 
-const RoutePage = ({user,isSellerExist}: Props) => {
+const RoutePage = ({user,isSellerExist,TopSeller,allPrompts}: Props) => {
   const [prompts, setPrompts] = useState<any>();
   const [loading, setLoading] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  console.log(prompts,"prompts")
 
   const fetchPromptsData = async () => {
     
     setLoading(true);
     try {
-      const response = await fetch(`/api/get-prompts`);
-      const data = await response.json();
-      setPrompts(data.prompts);
-      console.log(data.prompts)
+  
+      setPrompts(allPrompts);
+
     } catch (error) {
       console.error("Failed to fetch prompts:", error);
     } finally {
@@ -72,6 +74,8 @@ const RoutePage = ({user,isSellerExist}: Props) => {
               <h1 className={`${Styles.heading} p-2 font-montserrat`}>
                 Latest Prompts
               </h1>
+              <br />
+              <br />
               <div className="flex flex-wrap">
 
                 {prompts&& prompts.map((item:any)=>(
@@ -81,11 +85,20 @@ const RoutePage = ({user,isSellerExist}: Props) => {
           
 
               </div>
-
-              <BestSeller />
+              <br />
+              <br />
+              <BestSeller  TopSeller={TopSeller}/>
+              <br />
+              <br />
               <Future />
+              <br />
+              <br />
               <Partners />
+              <br />
+              <br />
               < SellerBanner />
+              <br />
+              <br />
               <br />
               <Footer />
             </div>

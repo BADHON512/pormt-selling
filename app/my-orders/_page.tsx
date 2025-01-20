@@ -40,7 +40,7 @@ const UserAllOrders = ({ orderData,user ,isSellerExist }: Props) => {
             {sourchCodeFiles &&
               sourchCodeFiles.map((file: any) => (
                 <a
-                  href={`${file.url.replace('/upload/', '/upload/fl_attachment/')}`}
+                   href={`${file.url.replace('/upload/', '/upload/fl_attachment/')}`}
                   key={file.key}
                   download
                   className="flex items-center"

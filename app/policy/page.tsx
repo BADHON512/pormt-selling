@@ -1,5 +1,6 @@
 import { getUser } from "@/actions/user/getUser";
 import Header from "@/components/Header";
+import { Button } from "@nextui-org/react";
 
 import React from "react";
 
@@ -59,12 +60,11 @@ const PolicyPage = async() => {
           <p className="text-lg mb-8 max-w-3xl mx-auto text-gray-200">
             If you have questions or concerns about our policies, feel free to reach out to our support team.
           </p>
-          <a
-            href="/contact"
-            className="inline-block bg-white text-indigo-800 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-200 transition duration-300"
-          >
-            Contact Us
-          </a>
+          <Button  variant="bordered">
+         Contact Us
+      </Button>
+           
+        
         </div>
       </section>
     </div>

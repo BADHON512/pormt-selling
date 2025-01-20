@@ -61,6 +61,7 @@ const MarketPlaceRouter = ({
     fetchPromptsData();
   }, [initialPage]);
 
+  const random:number= Math.random()*20
   if (!isMounted) {
     return null;
   }
@@ -82,12 +83,12 @@ const MarketPlaceRouter = ({
                 totalPrompts={totalPrompts}
               />
             </div>
-            <div key={12} className="w-full flex flex-wrap mt-5">
+            <div  className="w-full flex flex-wrap mt-5">
               {loading ? (
-                [...new Array(8)].map((i) => (
-                  <>
+                [...new Array(8)].map((i,d) => (
+                  <div key={d}>
                     <PromptCardLoader />
-                  </>
+                  </div>
                 ))
               ) : (
                 <>
