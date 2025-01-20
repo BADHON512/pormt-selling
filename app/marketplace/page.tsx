@@ -3,7 +3,7 @@ import { getUser } from "@/actions/user/getUser";
 
 const Page = async () => {
   const data = await getUser();
-  console.log(data)
+
 
   return (
     <div>

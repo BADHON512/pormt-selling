@@ -24,7 +24,7 @@ const PromptDetailsPage = ({ user, isSellerExist, promptData, relatedPrompts,
     const [stripePromise, setStripePromise] = useState<any>()
     const [clientSecret, setClientSecret] = useState("")
     const [mount, setMount] = useState(false)
-    console.log(clientSecret, "clientSecret")
+
 
     useEffect(() => {
         if (!mount) {
@@ -44,7 +44,7 @@ const PromptDetailsPage = ({ user, isSellerExist, promptData, relatedPrompts,
     const newPaymentIntent = async ({ amount }: { amount: Number }) => {
         const paymentIntent = await stripePaymentIntent({ amount })
         setClientSecret(paymentIntent?.client_secret)
-        console.log(paymentIntent, 'paymentIntent')
+
     }
 
     if (!mount) {

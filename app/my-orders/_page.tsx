@@ -109,7 +109,7 @@ setRating(0)
 setOpen(!open)
 }
 
-  console.log(orderId, user.id, rating,review)
+
   }
 
   return (

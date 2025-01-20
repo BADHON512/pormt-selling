@@ -24,7 +24,7 @@ const [shopData, setShopData] = useState<any>()
       getShopInfo()
 
      }, [])
-     console.log(shopData)
+  
      const getShopInfo =async()=>{
       const shopData=await getShopById({shopId:prompt?.sellerId})
       setShopData(shopData)

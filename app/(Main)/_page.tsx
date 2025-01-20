@@ -16,6 +16,7 @@ import Footer from '@/components/Layout/Footer';
 import Loader from '@/Utils/Loader';
 
 import { User } from '@clerk/nextjs/server';
+import toast from 'react-hot-toast';
 type Props = {
   user:User|undefined
   isSellerExist:boolean |undefined
@@ -27,7 +28,7 @@ const RoutePage = ({user,isSellerExist,TopSeller,allPrompts}: Props) => {
   const [prompts, setPrompts] = useState<any>();
   const [loading, setLoading] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  console.log(prompts,"prompts")
+
 
   const fetchPromptsData = async () => {
     
@@ -37,7 +38,7 @@ const RoutePage = ({user,isSellerExist,TopSeller,allPrompts}: Props) => {
       setPrompts(allPrompts);
 
     } catch (error) {
-      console.error("Failed to fetch prompts:", error);
+      toast.error(error)
     } finally {
       setLoading(false);
     }

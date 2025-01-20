@@ -6,12 +6,13 @@ import ShopBanner from "@/components/Shop/ShopBanner";
 import { User } from "@clerk/nextjs/server";
 import { Divider, Pagination } from "@nextui-org/react";
 import { useEffect, useState } from "react";
-import PromptCardLoader  from "@/components/Prompts/PromptCardLoader"
+import PromptCardLoader from "@/components/Prompts/PromptCardLoader"
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import FilterPrompt from "@/components/Prompts/FilterPrompt";
 import PromptCard from "@/components/Prompts/PromptCardLoader";
 import PromptsCard from "@/components/Prompts/PromptsCard";
+import toast from "react-hot-toast";
 
 
 const MarketPlaceRouter = ({
@@ -28,18 +29,18 @@ const MarketPlaceRouter = ({
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
-  console.log(prompts,'badhon')
+
   const fetchPromptsData = async () => {
     setLoading(true);
     try {
       const response = await fetch(`/api/get-prompts?page=${initialPage}`).catch();
       const data = await response.json();
-    
+
       setPrompts(data.prompts);
       setTotalPrompts(data.totalPrompts);
       setLoading(false);
     } catch (error) {
-      console.error("Failed to fetch prompts:", error);
+    toast.error(error)
     } finally {
       setLoading(false);
     }
@@ -61,7 +62,7 @@ const MarketPlaceRouter = ({
     fetchPromptsData();
   }, [initialPage]);
 
-  const random:number= Math.random()*20
+
   if (!isMounted) {
     return null;
   }
@@ -83,9 +84,9 @@ const MarketPlaceRouter = ({
                 totalPrompts={totalPrompts}
               />
             </div>
-            <div  className="w-full flex flex-wrap mt-5">
+            <div className="w-full flex flex-wrap mt-5">
               {loading ? (
-                [...new Array(8)].map((i,d) => (
+                [...new Array(8)].map((i, d) => (
                   <div key={d}>
                     <PromptCardLoader />
                   </div>

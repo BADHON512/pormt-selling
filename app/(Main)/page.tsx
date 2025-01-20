@@ -13,7 +13,7 @@ const Page = async () => {
  
 
 
-   console.log(topSeller)
+  
 
   return (
     <div>

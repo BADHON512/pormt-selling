@@ -4,6 +4,7 @@ import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "@/Utils/Loader";
+import toast from "react-hot-toast";
 
 
 type PromptsDataTypes = {
@@ -68,14 +69,14 @@ const AllPrompts = ({
   ];
   const [promptsData,setPromptsData]=useState([])
   const [loging, setLoading] = useState(true)
-  console.log(promptsData)
+
   useEffect(() => {
     axios.get('/api/get-prompts').then((res)=>{
  setPromptsData(res.data)
  setLoading(false)
     }).catch((error)=>{
         setLoading(false)
-        console.log(error)
+        toast.error(error)
     })
   
   

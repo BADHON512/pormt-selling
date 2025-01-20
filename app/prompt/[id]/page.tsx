@@ -17,7 +17,7 @@ const page =async ({params}:{params:any}) => {
 
 
   const publishableKey=await stripePublishableKey()
-  console.log(publishableKey)
+
   return (
     <div>
       <PromptDetailsPage

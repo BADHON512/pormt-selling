@@ -66,7 +66,7 @@ const CheckoutForm = ({
         }
       }
     } catch (error) {
-      console.error("Payment processing error:", error);
+     toast.error(error)
       setMessage("Payment failed. Please try again.");
     } finally {
       setIsLoading(false);
